@@ -1,0 +1,26 @@
+
+print("Ingrese el mensaje")
+mensaje = input()
+print("Ingrese el número de veces al correr la letra")
+veces = int(input())
+
+mensajeDescifrado = ''
+
+for letra in mensaje:
+    minuscula = (letra >= 'a' and letra <= 'z')
+    mayuscula = (letra >= 'A' and letra <= 'Z')
+
+    if not (minuscula or mayuscula):
+        mensajeDescifrado += letra
+    else:
+        base = ord('a')
+
+        if mayuscula:
+            base = ord('A')
+        ascii = ord(letra)
+
+        nuevoAscii = (ascii - base - veces) % 26 + base
+        nuevoChar = chr(nuevoAscii)
+        mensajeDescifrado += nuevoChar
+
+print(mensajeDescifrado)
